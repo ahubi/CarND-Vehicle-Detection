@@ -180,6 +180,11 @@ class Rect:
         return (self.right > other.left and self.left < other.right and
                 self.top < other.bottom and self.bottom > other.top)
 
+    def some_intersect(self, other):
+        """Return true if a rectangle has some intersections with this rectangle."""
+        return (self.contains(other.top_left()) or self.contains(other.bottom_right()) or
+                other.contains(self.top_left()) or other.contains(self.bottom_right())) 
+
     def top_left(self):
         """Return the top-left corner as a Point."""
         return Point(self.left, self.top)
